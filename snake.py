@@ -1,6 +1,6 @@
 import pygame
 
-from constants import CELL_SIZE
+from constants import CELL_SIZE, SNAKE_SPEED
 
 class Snake:
     def __init__(self) -> None:
@@ -17,4 +17,14 @@ class Snake:
         self.snake_body.append(new_head)
         self.snake_body.pop(0)
 
-    def update() -> None:
+    def update(self) -> None:
+        keys = pygame.key.get_pressed()
+        self.move()
+        if keys[pygame.K_s] and self.direction != pygame.Vector2(0, -1):
+            self.direction = pygame.Vector2(0, 1)
+        if keys[pygame.K_w] and self.direction != pygame.Vector2(0, 1):
+            self.direction = pygame.Vector2(0, -1)
+        if keys[pygame.K_a] and self.direction != pygame.Vector2(1, 0):
+            self.direction = pygame.Vector2(-1, 0)
+        if keys[pygame.K_d] and self.direction != pygame.Vector2(-1, 0):
+            self.direction = pygame.Vector2(1, 0)

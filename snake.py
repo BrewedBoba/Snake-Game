@@ -37,3 +37,8 @@ class Snake:
             self.direction = pygame.Vector2(-1, 0)
         if keys[pygame.K_d] and self.direction != pygame.Vector2(-1, 0):
             self.direction = pygame.Vector2(1, 0)
+
+    def collide_with_itself(self) -> bool:
+        head = self.snake_body[-1]
+        if head in self.snake_body[:-1]:
+            return True

@@ -1,5 +1,5 @@
 import pygame
-
+import sys
 from constants import CELL_SIZE, SCREEN_HEIGHT, SCREEN_WIDTH
 from snake import Snake
 
@@ -17,7 +17,8 @@ def main():
                 return
 
         snake.update(dt)
-
+        if snake.collide_with_itself() == True:
+            sys.exit()
         screen.fill("lightgreen")
         snake.draw(screen)
         pygame.display.flip()

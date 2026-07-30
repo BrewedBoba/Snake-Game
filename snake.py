@@ -41,6 +41,19 @@ class Snake:
         if keys[pygame.K_d] and self.direction != pygame.Vector2(-1, 0):
             self.direction = pygame.Vector2(1, 0)
 
+
     def collide_with_itself(self) -> bool:
         head = self.snake_body[-1]
         return head in self.snake_body[:-1]
+
+    def teleport(self) -> None:
+        print(self.snake_body[-1].x)
+        for body in self.snake_body:
+            if body.x > NUMBER_OF_CELL - 1:
+                body.x = 0
+            elif body.x < 0:
+                body.x = NUMBER_OF_CELL - 1
+            if body.y > NUMBER_OF_CELL - 1:
+                body.y = 0
+            elif body.y < 0:
+                body.y = NUMBER_OF_CELL - 1

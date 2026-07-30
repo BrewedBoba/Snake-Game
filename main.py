@@ -16,8 +16,8 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        snake.teleport()
         snake.update(dt)
+        snake.teleport()
 
         if snake.collide_with_itself() == True:
             sys.exit()

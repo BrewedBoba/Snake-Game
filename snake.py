@@ -47,7 +47,6 @@ class Snake:
         return head in self.snake_body[:-1]
 
     def teleport(self) -> None:
-        print(self.snake_body[-1].x)
         for body in self.snake_body:
             if body.x > NUMBER_OF_CELL - 1:
                 body.x = 0

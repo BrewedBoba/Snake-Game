@@ -16,7 +16,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        snake.update()
+        snake.update(dt)
 
         screen.fill("lightgreen")
         snake.draw(screen)

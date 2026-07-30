@@ -43,5 +43,4 @@ class Snake:
 
     def collide_with_itself(self) -> bool:
         head = self.snake_body[-1]
-        if head in self.snake_body[:-1]:
-            return True
+        return head in self.snake_body[:-1]

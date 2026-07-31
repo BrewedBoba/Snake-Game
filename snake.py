@@ -8,18 +8,20 @@ class Snake:
         self.direction = pygame.Vector2(0, 1)
         self.time_since_last_move = 0
         self.has_move = False
+        self.should_grow = False
 
     def draw(self, screen) -> None:
         for square in self.snake_body:
             squares = pygame.Rect(square.x * CELL_SIZE, square.y * CELL_SIZE, CELL_SIZE, CELL_SIZE)
             pygame.draw.rect(screen, "darkgreen", squares)
 
-
     def move(self) -> None:
         if self.has_move == True:
             new_head = self.snake_body[-1] + self.direction
             self.snake_body.append(new_head)
-            self.snake_body.pop(0)
+            if self.should_grow == False:
+                self.snake_body.pop(0)
+            self.should_grow = False
 
     def update(self, dt) -> None:
         # Adding deltaTime
@@ -41,7 +43,6 @@ class Snake:
         if keys[pygame.K_d] and self.direction != pygame.Vector2(-1, 0):
             self.direction = pygame.Vector2(1, 0)
 
-
     def collide_with_itself(self) -> bool:
         head = self.snake_body[-1]
         return head in self.snake_body[:-1]
@@ -56,3 +57,6 @@ class Snake:
                 body.y = 0
             elif body.y < 0:
                 body.y = NUMBER_OF_CELL - 1
+
+    def grow(self):
+            self.should_grow = True

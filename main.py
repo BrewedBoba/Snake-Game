@@ -10,7 +10,7 @@ def main():
     clock = pygame.time.Clock()
     dt = 0.0
     snake = Snake()
-    food = Food()
+    food = Food(snake.snake_body)
 
     while True:
 
@@ -22,13 +22,15 @@ def main():
         snake.update(dt)
         snake.teleport()
 
+        if food.eaten(snake.snake_body[-1], snake.snake_body) == True:
+            snake.grow()
+
         if snake.collide_with_itself() == True:
             sys.exit()
 
         screen.fill("lightgreen")
         snake.draw(screen)
         food.draw(screen)
-        food.eaten(snake.snake_body[-1])
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 

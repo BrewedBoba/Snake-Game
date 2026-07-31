@@ -6,7 +6,8 @@ from snake import Snake
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #Set the Window
+    pygame.display.set_caption("Snake Game")
     clock = pygame.time.Clock()
     dt = 0.0
     snake = Snake()

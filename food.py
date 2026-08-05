@@ -17,7 +17,7 @@ class Food:
     def draw(self, screen):
         position = self.position
         position = pygame.Rect(position.x * CELL_SIZE, position.y * CELL_SIZE, CELL_SIZE, CELL_SIZE)
-        pygame.draw.rect(screen, "red", position)
+        pygame.draw.rect(screen, "red", position, 0, 10)
 
     def eaten(self, snake_head, snake):
         if self.position == snake_head:

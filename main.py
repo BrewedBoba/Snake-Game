@@ -8,7 +8,7 @@ from ui import show_score
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT)) #Set the Window
-    pygame.display.set_caption("Snake Game")
+    pygame.display.set_caption("Snake Game") #set the display caption
     clock = pygame.time.Clock()
     dt = 0.0
     snake = Snake()
